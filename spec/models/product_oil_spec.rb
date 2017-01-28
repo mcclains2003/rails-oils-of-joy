@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe ProductOil, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  describe 'associations & validations' do 
+    it { should belong_to(:product) }
+    it { should belong_to(:oil) }
+  end
+
 end

@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Oil, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  describe 'associations & validations' do 
+    it { should have_many(:products).through(:product_oils) }
+  end
+
 end
