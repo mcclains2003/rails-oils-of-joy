@@ -11,7 +11,7 @@ Paulines site
   password
   current_cart_id    default to nil
 
--Product
+-Product (resource)
   belongs_to :category
 
   has_many :product_oils
@@ -24,29 +24,29 @@ Paulines site
   name
   description
   
--Oil
+-Oil (resource)
   has_many :product_oils
   has_many :products, through: :product_oils
 
   name
   description
 
--ProductOils
+-ProductOils (model)
   belongs_to product
   belongs_to oil
 
--Category
+-Category (controller)
   has_many :products
 
-  name (ex. cream, salt scrub, 
+  name (ex. cream, salt scrub, ect)
 
--Variants
+-Variants (controller)
   has_many :product_variants
   has_many :products, through: :product_variants
 
   size
 
--ProductVariants
+-ProductVariants (model)
   belongs_to :product
   belongs_to :variant
 
