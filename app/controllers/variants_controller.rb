@@ -2,9 +2,17 @@ class VariantsController < ApplicationController
   before_action :set_variant, only: [:show, :edit, :update, :destroy]
 
   def new
+    @variant = Variant.new
   end
 
   def create
+    @variant = Variant.new(variant_params)
+
+    if @variant.save
+      redirect_to variant_path(@variant)
+    else
+      redirect_to new_variant_path
+    end
   end
 
   def show
@@ -14,9 +22,15 @@ class VariantsController < ApplicationController
   end
 
   def update
+    if @variant.update(variant_params)
+      redirect_to variant_path(@variant)
+    else
+      redirect_to edit_variant_path
+    end
   end
 
   def index
+    @variants = Variant.all
   end
 
   def destroy
