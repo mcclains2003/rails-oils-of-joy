@@ -1,7 +1,7 @@
 <ul>
-  <li>
-    <% @oils.each do |oil| %>
+  <% @oils.each do |oil| %>
+    <li>
       <%= link_to oil.name, oil_path(oil) %>
-    <% end %>
-  </li>
+    </li>
+  <% end %>
 </ul>
