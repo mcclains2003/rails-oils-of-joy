@@ -43,7 +43,7 @@ variant = Variant.create([
   ])
 
 product = Product.create([
-  { name: "Happy Feet", description: "Makes feet happy" }
+  { name: "Happy Feet", description: "Makes feet happy", category_id: category.first.id }
   ])
 
 ProductOil.create(product_id: product, oil_id: oil.first)

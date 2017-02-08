@@ -25,13 +25,9 @@
   </div>
 
   <div class="field">
-    <%= f.label "Size & Cost" %>
-    <% Variant.all.each do |v| %>
-      <p>
-        <label for="variant_id_<%= v.id %>"><%= v.size %></label>
-        <input type="checkbox" name="product[product_variants][]" value="<%= v.id %>" id="variant_id_<%= v.id %>">
-        <input type="number_field" name="product[product_variants][][price]">
-      </p>
+    <%= f.fields_for :product_variants do |pv| %>
+      <%= pv.collection_select(:variant_id, Variant.all, :id, :size) %>
+      <%= pv.text_field :price %>
     <% end %>
   </div>
 
