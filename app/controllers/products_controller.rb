@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
   end
 
   def create
+    raise params.inspect
     @product = Product.new(product_params)
 
     if @product.save
@@ -39,7 +40,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :category_id, oil_ids: [], variant_ids: [])
+    params.require(:product).permit(:name, :description, :category_id, :oil_ids => [], :variant_ids => [], :product_variants_attributes => [:price])
   end
 
   def set_product
