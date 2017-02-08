@@ -2,4 +2,11 @@
 
 <h3><%= @product.description %></h3>
 
-<p>Category: <%= @product.category %></p>
+<p>Category: <%= @product.category.name %></p>
+
+<p>Available Scents:</p>
+<ul>
+  <% @product.oils.each do |oil| %>
+    <li><%= oil.name %></li>
+  <% end %>
+</ul>
