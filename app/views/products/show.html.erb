@@ -10,3 +10,10 @@
     <li><%= oil.name %></li>
   <% end %>
 </ul>
+
+<p>Available Sizes</p>
+<ul>
+  <% @product.product_variants.each do |pv| %>
+    <li><%= pv.variant.size %> - $<%= pv.price %></li>
+  <% end %>
+</ul>
