@@ -1,38 +1,52 @@
-<%= form_for(@product) do |f| %>
+<div class="container">
+  <%= form_for(@product) do |f| %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <br>
-    <%= f.text_field :name %>
-  </div>
+    <div class="form-group row">
+      <label class="col-1 col-form-label"><%= f.label :name %></label>
+      <div class="col-8">
+      <%= f.text_field :name %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :description %>
-    <br>
-    <%= f.text_area :description %>
-  </div>
+    <div class="form-group row">
+      <label class="col-1 col-form-label"><%= f.label :description %></label>
+      <div class="col-8">
+      <%= f.text_area :description %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label "Category" %>
-    <br>
-    <%= f.collection_select(:category_id, Category.all, :id, :name) %>
-  </div>
+    <div class="form-group row">
+      <label class="col-1 col-form-label"><%= f.label "Category" %></label>
+      <div class="col-8">
+      <%= f.collection_select(:category_id, Category.all, :id, :name) %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label "Oils" %>
-    <br>
-    <%= f.collection_check_boxes :oil_ids, Oil.all, :id, :name %><br />
-  </div>
+    <div class="form-check row">
+      <label class="col-1 col-form-label"><%= f.label "Oils" %></label>
+      <div class="col-8">
+        <%= f.collection_check_boxes(:oil_ids, Oil.all, :id, :name) do |b| %>
+          <%= b.label class:"label-checkbox" do %>
+            <%=b.check_box + b.text%>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.fields_for :product_variants do |pv| %>
-      <%= pv.collection_select(:variant_id, Variant.all, :id, :size) %>
-      <%= pv.text_field :price %>
-    <% end %>
-  </div>
+    <div class="form-group row">
+      <label class="col-1 col-form-label"><%= f.label "Size & Cost" %></label>
+      <% Variant.all.each do |v| %>
+        <p>
+          <input type="checkbox" name="product[product_variants][variant_ids][]" value="<%= v.id %>" id="variant_id_<%= v.id %>">
+          <label for="variant_id_<%= v.id %>"><%= v.size %></label>
+          <input type="number" name="product[product_variants][variant_ids][][price]" id="v.id" />
+        </p>
+      <% end %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-  
-<% end %>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+
+  <% end %>
+</div>
