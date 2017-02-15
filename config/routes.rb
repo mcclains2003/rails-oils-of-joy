@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   # Static Pages
   root 'static_pages#home'
-  get '/about' => 'static_pages#about'
+
   get '/contact' => 'static_pages#contact'
 
   # You can have the root of your site routed with "root"
