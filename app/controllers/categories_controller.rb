@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :destroy]
+  before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   def new
     @category = Category.new
@@ -16,6 +16,17 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.all
+  end
+
+  def edit
+  end
+
+  def update
+    if @category.update(category_params)
+      redirect_to category_path(@category)
+    else
+      redirect_to edit_category_path(@category)
+    end
   end
 
   def show
