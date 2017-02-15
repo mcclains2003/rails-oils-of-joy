@@ -28,5 +28,5 @@ ProductOil.create([
   ])
 
 ProductVariant.create([
-  { product_id: product.first.id, variant_id: variant.first.id, price: 8.00 }
+  { product_id: product.first.id, variant_id: variant.first.id, price: 8.00 }, { product_id: product.first.id, variant_id: variant.last.id, price: 5.00 }
   ])

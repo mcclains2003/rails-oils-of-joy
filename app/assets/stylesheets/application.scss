@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+ @import "bootstrap";
+
+ body {
+  background-image: asset_data_url("bg-white.png");
+ }
