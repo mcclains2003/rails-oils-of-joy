@@ -1,0 +1,2 @@
+class VolumeCostsController < ApplicationController
+end
