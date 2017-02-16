@@ -4,8 +4,12 @@ class Product < ActiveRecord::Base
   has_many :product_oils
   has_many :oils, through: :product_oils
 
-  has_many :product_variants
-  has_many :variants, through: :product_variants
+  has_many :volume_costs
 
-  accepts_nested_attributes_for :product_variants
+  def volume_costs_attributes=(volume_costs_hashes)
+    volume_costs_hashes.each do |i, attributes|
+      self.volume_costs.build(volume: attributes[:volume], cost: attributes[:cost])
+    end
+  end
+
 end
