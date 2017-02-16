@@ -26,23 +26,48 @@
       <label class="col-1 col-form-label"><%= f.label "Oils" %></label>
       <div class="col-8">
         <%= f.collection_check_boxes(:oil_ids, Oil.all, :id, :name) do |b| %>
-          <%= b.label class:"label-checkbox" do %>
-            <%=b.check_box + b.text%>
-          <% end %>
+          <p>
+            <%= b.check_box :class => "label-checkbox" %>
+            <%= b.label %>
+          </p>
         <% end %>
       </div>
     </div>
 
-    <div class="form-group row">
-      <label class="col-1 col-form-label"><%= f.label "Size & Cost" %></label>
-      <% Variant.all.each do |v| %>
-        <p>
-          <input type="checkbox" name="product[product_variants][variant_ids][]" value="<%= v.id %>" id="variant_id_<%= v.id %>">
-          <label for="variant_id_<%= v.id %>"><%= v.size %></label>
-          <input type="number" name="product[product_variants][variant_ids][][price]" id="v.id" />
-        </p>
-      <% end %>
+
+    <%= f.fields_for :volume_costs do |vc_builder| %>
+      <div class="form-group row">
+        <label class="col-1 col-form-label"><%= vc_builder.label "Volume" %></label>
+        <%= vc_builder.number_field :volume %>
+        <div class="input-group-addon">ozs</div>
+
+        <label class="col-1 col-form-label"><%= vc_builder.label "Cost" %></label>
+        <div class="input-group-addon">$</div>
+        <%= vc_builder.number_field :cost %>
+      </div>  
+    <% end %>
+  
+
+<!--     <div class="form-group row">
+      <label class="col-1 col-form-label"><%#= f.label "Volume" %></label>
+      <input type="number" id="product_volume_costs_attributes_0_volume" name="product[volume_costs_attributes][0][volume]">
+      <label class="col-1 col-form-label"><%#= f.label "Cost" %></label>
+      <input type="number" id="product_volume_costs_attributes_0_cost" name="product[volume_costs_attributes][0][cost]">
     </div>
+
+    <div class="form-group row">
+      <label class="col-1 col-form-label"><%#= f.label "Volume" %></label>
+      <input type="number" id="product_volume_costs_attributes_1_volume" name="product[volume_costs_attributes][1][volume]">
+      <label class="col-1 col-form-label"><%#= f.label "Cost" %></label>
+      <input type="number" id="product_volume_costs_attributes_1_cost" name="product[volume_costs_attributes][1][cost]">
+    </div>
+
+    <div class="form-group row">
+      <label class="col-1 col-form-label"><%#= f.label "Volume" %></label>
+      <input type="number" id="product_volume_costs_attributes_2_volume" name="product[volume_costs_attributes][2][volume]">
+      <label class="col-1 col-form-label"><%#= f.label "Cost" %></label>
+      <input type="number" id="product_volume_costs_attributes_2_cost" name="product[volume_costs_attributes][2][cost]">
+    </div> -->
 
     <div class="actions">
       <%= f.submit %>

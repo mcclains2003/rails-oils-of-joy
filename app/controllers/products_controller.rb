@@ -3,10 +3,13 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+
+    3.times do
+      @product.volume_costs.build
+    end
   end
 
   def create
-    raise params.inspect
     @product = Product.new(product_params)
 
     if @product.save
@@ -40,7 +43,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :category_id, :oil_ids => [], :variant_ids => [], :product_variants_attributes => [:price])
+    params.require(:product).permit(:name, :description, :category_id, :oil_ids => [], :volume_costs_attributes => [:volume, :cost])
   end
 
   def set_product
