@@ -34,10 +34,17 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @products = Product.all
+    if params[:category_id]
+      @products = Product.joins(:category).where('category_id' => params[:category_id].to_s)
+    else
+      @products = Product.all
+    end
   end
 
   def destroy
+    @product.destroy
+
+    redirect_to root_path
   end
 
   private

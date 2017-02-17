@@ -30,6 +30,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @show_category = @category.products
   end
 
   def destroy
