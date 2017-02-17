@@ -11,9 +11,20 @@
   <% end %>
 </ul>
 
-<p>Available Sizes</p>
+<p>Available Sizes and Costs</p>
 <ul>
-  <% @product.product_variants.each do |pv| %>
-    <li><%= pv.variant.size %> - $<%= pv.price %></li>
+  <% @product.volume_costs.each do |vc| %>
+    <li><%= vc.volume %> ozs - $<%= vc.cost %></li>
   <% end %>
 </ul>
+
+<div>
+  <button type="button" class="btn btn-success">
+    <%= link_to "Edit", edit_product_path(@product) %>
+  </button>
+
+  <button type="button" class="btn btn-danger">
+    <%= link_to "Delete", @product , method: :delete, data: { confirm: "Are You Sure?" } %>
+  </button>
+</div>
+
