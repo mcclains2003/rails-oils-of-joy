@@ -1,6 +1,21 @@
 <div class="container">
   <%= form_for(@product) do |f| %>
 
+    <% if @product.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@product.errors.count, "error") %>
+          prohibited this product from being saved:
+        </h2>
+     
+        <ul>
+        <% @product.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
     <div class="form-group row">
       <label class="col-1 col-form-label"><%= f.label :name %></label>
       <div class="col-8">
@@ -34,7 +49,6 @@
       </div>
     </div>
 
-
     <%= f.fields_for :volume_costs do |vc_builder| %>
       <div class="form-group row">
         <label class="col-1 col-form-label"><%= vc_builder.label "Volume" %></label>
@@ -46,28 +60,6 @@
         <%= vc_builder.number_field :cost %>
       </div>  
     <% end %>
-  
-
-<!--     <div class="form-group row">
-      <label class="col-1 col-form-label"><%#= f.label "Volume" %></label>
-      <input type="number" id="product_volume_costs_attributes_0_volume" name="product[volume_costs_attributes][0][volume]">
-      <label class="col-1 col-form-label"><%#= f.label "Cost" %></label>
-      <input type="number" id="product_volume_costs_attributes_0_cost" name="product[volume_costs_attributes][0][cost]">
-    </div>
-
-    <div class="form-group row">
-      <label class="col-1 col-form-label"><%#= f.label "Volume" %></label>
-      <input type="number" id="product_volume_costs_attributes_1_volume" name="product[volume_costs_attributes][1][volume]">
-      <label class="col-1 col-form-label"><%#= f.label "Cost" %></label>
-      <input type="number" id="product_volume_costs_attributes_1_cost" name="product[volume_costs_attributes][1][cost]">
-    </div>
-
-    <div class="form-group row">
-      <label class="col-1 col-form-label"><%#= f.label "Volume" %></label>
-      <input type="number" id="product_volume_costs_attributes_2_volume" name="product[volume_costs_attributes][2][volume]">
-      <label class="col-1 col-form-label"><%#= f.label "Cost" %></label>
-      <input type="number" id="product_volume_costs_attributes_2_cost" name="product[volume_costs_attributes][2][cost]">
-    </div> -->
 
     <div class="actions">
       <%= f.submit %>
