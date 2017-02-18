@@ -13,7 +13,7 @@
 
 <p>Available Sizes and Costs</p>
 <ul>
-  <% @product.volume_costs.each do |vc| %>
+  <% @product.volumes_with_data.each do |vc| %>
     <li><%= vc.volume %> ozs - $<%= vc.cost %></li>
   <% end %>
 </ul>
