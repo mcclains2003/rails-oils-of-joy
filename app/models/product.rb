@@ -9,15 +9,14 @@ class Product < ActiveRecord::Base
   validates :name, uniqueness: true
 
   def volume_costs_attributes=(volume_costs_hashes)
+    vc = []
     volume_costs_hashes.each do |i, attributes|
-      unless attributes[:volume] == "0" && attributes[:cost] == "0"
-        self.volume_costs.build(attributes)
-      end
+      vc << VolumeCost.find_or_create_by(attributes).id
     end
+    self.volume_cost_ids = vc
   end
 
   def volumes_with_data
     volume_costs.where('volume > ? AND cost > ?', 0, 0)
   end
-
 end
