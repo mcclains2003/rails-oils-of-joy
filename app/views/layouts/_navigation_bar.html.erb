@@ -3,9 +3,6 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <a class="navbar-brand" href="#">Oils of Joy</a>
-<!--   <a class="navbar-brand" href="/">
-    <img src="assets/images/oils-of-joy.png" width="30" height="30" alt="">
-  </a> -->
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
@@ -15,23 +12,29 @@
         <a class="nav-link" href="/oils">Oils</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Products
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <% Category.all.each do |cat| %>
-            <a class="dropdown-item" href="/categories/<%= cat.id %>/products"><%= category_title(cat) %></a>
+            <a class="dropdown-item" href="/categories/<%= cat.id %>/products"><%= cat.name %></a>
           <% end %>
         </div>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Add New
+        <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Admin Items
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <h6 class="dropdown-header">ADD NEW:</h6>
           <a class="dropdown-item" href="/oils/new">Oil</a>
           <a class="dropdown-item" href="/categories/new">Category</a>
           <a class="dropdown-item" href="/products/new">Product</a>
+          <div class="dropdown-divider"></div>
+          <h6 class="dropdown-header">REMOVE:</h6>
+          <a class="dropdown-item" href="/oils">Oil</a>
+          <a class="dropdown-item" href="/categories">Category</a>
+          <a class="dropdown-item" href="/products">Product</a>
         </div>
       </li>
     </ul>
