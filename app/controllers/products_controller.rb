@@ -36,6 +36,7 @@ class ProductsController < ApplicationController
   def index
     if params[:category_id]
       @products = Product.joins(:category).where('category_id' => params[:category_id].to_s)
+      @category = Category.find(params[:category_id])
     else
       @products = Product.all
     end
