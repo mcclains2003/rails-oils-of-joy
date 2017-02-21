@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <%= form_for(@product) do |f| %>
 
     <% if @product.errors.any? %>
@@ -33,18 +33,18 @@
     <div class="form-group row">
       <label class="col-1 col-form-label"><%= f.label "Category" %></label>
       <div class="col-8">
-      <%= f.collection_select(:category_id, Category.all, :id, :name) %>
+        <%= f.collection_select(:category_id, Category.all, :id, :name, {:selected => params[:category_id]}) %>
       </div>
     </div>
 
     <div class="form-check row">
       <label class="col-1 col-form-label"><%= f.label "Oils" %></label>
-      <div class="col-8">
+      <div class="container-fluid">
         <%= f.collection_check_boxes(:oil_ids, Oil.all, :id, :name) do |b| %>
-          <p>
+          <div class="d-inline-block col-md-3">
             <%= b.check_box :class => "label-checkbox" %>
             <%= b.label %>
-          </p>
+          </div>
         <% end %>
       </div>
     </div>
@@ -52,12 +52,12 @@
     <%= f.fields_for :volume_costs do |vc_builder| %>
       <div class="form-group row">
         <label class="col-1 col-form-label"><%= vc_builder.label "Volume" %></label>
-        <%= vc_builder.number_field :volume %>
+        <%= vc_builder.number_field :volume, step: 0.01 %>
         <div class="input-group-addon">ozs</div>
 
         <label class="col-1 col-form-label"><%= vc_builder.label "Cost" %></label>
         <div class="input-group-addon">$</div>
-        <%= vc_builder.number_field :cost %>
+        <%= vc_builder.number_field :cost, step: 0.01 %>
       </div>  
     <% end %>
 
