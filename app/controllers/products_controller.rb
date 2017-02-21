@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def new
-    @product = Product.new
+    @product = Product.new(category_id: params[:category_id])
 
     3.times do
       @product.volume_costs.build
@@ -34,12 +34,8 @@ class ProductsController < ApplicationController
   end
 
   def index
-    if params[:category_id]
-      @products = Product.joins(:category).where('category_id' => params[:category_id].to_s)
-      @category = Category.find(params[:category_id])
-    else
-      @products = Product.all
-    end
+    @category = Category.find(params[:category_id])
+    @products = Product.send(@category.name.downcase.gsub(" ", "_"))
   end
 
   def destroy
