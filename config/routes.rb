@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :products
   
   resources :categories do 
-    resources :products, only: [:index]
+    resources :products, only: [:new, :create, :index]
   end
   
   # The priority is based upon order of creation: first created -> highest priority.
