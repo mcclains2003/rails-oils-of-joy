@@ -10,17 +10,18 @@
       <p class="card-text"><%= product.oils.collect { |oil| oil.name }.join(", ") %></p>
       <h5 class="card-title">Volume and Cost</h5>
       <p class="card-text"><%= product.volumes_with_data.collect { |vc| "| #{vc.volume} oz - #{number_to_currency(vc.cost)} |" }.join(", ") %></p>
+      
+      <% if allowed? %>
+        <div class="btn-group btn-group-sm" role="group" >
+          <button type="button" class="btn btn-secondary">
+            <%= link_to "Edit", edit_product_path(product) %>
+          </button>
 
-      <div class="btn-group btn-group-sm" role="group" aria-label="Edit and Delete">
-        <button type="button" class="btn btn-secondary">
-          <%= link_to "Edit", edit_product_path(product) %>
-        </button>
-
-        <button type="button" class="btn btn-secondary">
-          <%= link_to "Delete", product , method: :delete, data: { confirm: "Are You Sure?" } %>
-        </button>
-
-      </div>
+          <button type="button" class="btn btn-secondary">
+            <%= link_to "Delete", product , method: :delete, data: { confirm: "Are You Sure?" } %>
+          </button>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

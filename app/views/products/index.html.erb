@@ -2,8 +2,9 @@
 
   <div class="row">
     <h1><%= @category.name %></h1>
-    
-    <%= link_to "New #{@category.name.singularize}", new_category_product_path(@category.id) %>
+    <% if allowed? %>
+      <%= link_to "New #{@category.name.singularize}", new_category_product_path(@category.id) %>
+    <% end %>
   </div>
 
   <%= render partial: 'product_details', collection: @products, as: :product %>
