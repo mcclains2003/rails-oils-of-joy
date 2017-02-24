@@ -7,10 +7,14 @@ class Product < ActiveRecord::Base
   has_many :volume_costs, :dependent => :destroy
 
   validates :name, uniqueness: true
+  validates :name, presence: true
 
   before_save :naming_convention
 
-  scope :hand_cream, -> { joins(:category).where('categories.name = ?', "Hand Cream") }
+  scope :hand_creams, -> { joins(:category).where('categories.name = ?', "Hand Creams") }
+  scope :sprays, -> { joins(:category).where('categories.name = ?', "Sprays") }
+  scope :lip_glosses, -> { joins(:category).where('categories.name = ?', "Lip Glosses") }
+  scope :scrubs, -> { joins(:category).where('categories.name = ?', "Scrubs") }
 
   def volume_costs_attributes=(volume_costs_hashes)
     vc = []
@@ -25,7 +29,7 @@ class Product < ActiveRecord::Base
   end
 
   def naming_convention
-    self.attributes[name] = self.attributes[name].capitalize
+    self.name = self.name.capitalize
   end
 
 end
