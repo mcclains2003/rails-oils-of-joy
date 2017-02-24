@@ -1,0 +1,16 @@
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Admin Items
+  </a>
+  <div class="dropdown-menu">
+    <h6 class="dropdown-header">ADD NEW:</h6>
+    <%= link_helper("Oil", new_oil_path, "dropdown-item") %>
+    <%= link_helper("Category", new_category_path, "dropdown-item") %>
+    <%= link_helper("Product", new_product_path, "dropdown-item") %>
+    <div class="dropdown-divider"></div>
+    <h6 class="dropdown-header">REMOVE:</h6>
+    <%= link_helper("Oil", oils_path, "dropdown-item") %>
+    <%= link_helper("Category", categories_path, "dropdown-item") %>
+    <%= link_helper("Product", products_path, "dropdown-item") %>
+  </div>
+</li>
