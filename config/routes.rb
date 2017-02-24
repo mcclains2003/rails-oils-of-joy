@@ -1,19 +1,27 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users, :only => [:new, :create]
   resources :oils
   resources :products
   
   resources :categories do 
     resources :products, only: [:new, :create, :index]
   end
-  
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
 
   # Static Pages
   root 'static_pages#home'
-
   get '/contact' => 'static_pages#contact'
+
+  # Basic Signup/Login/Logout
+  get    '/signup' => 'users#new'
+  post   '/users' => 'users#create'
+  get    '/login' => 'sessions#new'
+  post   '/sessions' => 'sessions#create'
+  delete '/logout' => 'sessions#destroy'
+
+  get '/auth/facebook/callback' => 'sessions#create'
+  
+  # The priority is based upon order of creation: first created -> highest priority.
+  # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
