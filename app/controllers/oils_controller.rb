@@ -1,5 +1,6 @@
 class OilsController < ApplicationController
   before_action :set_oil, only: [:show, :edit, :update, :destroy]
+  before_action :authorize, except: [:show, :index]
 
   def new
     @oil = Oil.new

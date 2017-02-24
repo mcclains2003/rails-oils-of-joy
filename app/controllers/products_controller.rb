@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :authorize, except: [:show, :index]
 
   def new
     @product = Product.new(category_id: params[:category_id])
