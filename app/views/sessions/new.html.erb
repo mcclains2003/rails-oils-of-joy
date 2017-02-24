@@ -8,6 +8,8 @@
   <br>
   <%= submit_tag "Login" %>
 
-  <%= link_to("login with facebook!", "/auth/facebook") %>
+  <button class="btn btn-social btn-facebook">
+    <%= link_to "Facebook Signin", "/auth/facebook", class: "fa fa-facebook" %>
+  </button>
 
 <% end %>
