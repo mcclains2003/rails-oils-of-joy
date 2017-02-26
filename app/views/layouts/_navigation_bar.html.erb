@@ -15,17 +15,12 @@
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Products
         </a>
-        <div class="dropdown-menu">     
-          <% all_categories.each do |cat| %>
-            <a class="dropdown-item" href="/categories/<%= cat.id %>/products"><%= cat.name %>
-            </a>
-          <% end %>
-        </div>
+        <%= product_category_index_dropdown %>
       </li>
       <% if current_user.try(:admin?) %>
         <%= render partial: 'layouts/navbar_admin_items' %>
       <% end %>
     </ul>
   </div>
-  <%= render partial: 'layouts/navbar_user_auth_links' %>
+  <%= authentication_items %>
 </nav>
