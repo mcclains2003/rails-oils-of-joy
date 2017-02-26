@@ -16,13 +16,13 @@ module NavigationHelper
     end
   end
 
-  def authentication_nav_link(name, path, method = :get)
+  def nav_link_helper(name, path, method = :get)
     content_tag(:li, class: 'nav-item') do 
       link_to name, path, method: method, class: 'nav-link'
     end
   end
 
-  def authentication_nav_text(user)
+  def nav_text_helper(user)
     content_tag(:li, "Hello, #{ user.name }", class: 'nav-text') do 
       "Hello, #{ user.name }"
     end
@@ -31,14 +31,15 @@ module NavigationHelper
   def authentication_items
     content_tag(:ul, class: "nav navbar-nav navbar-right") do 
       if current_user
-        link1 = authentication_nav_text(current_user)
-        link2 = authentication_nav_link("Log Out", logout_path, :delete)
-        (link1 + link2).html_safe
+        link1 = nav_text_helper(current_user)
+        link2 = nav_link_helper("Log Out", logout_path, :delete)
+        # (link1 + link2).html_safe
       else
-        link1 = authentication_nav_link("Sign Up", new_user_path)
-        link2 = authentication_nav_link("Login", login_path)
-        (link1 + link2).html_safe
+        link1 = nav_link_helper("Sign Up", new_user_path)
+        link2 = nav_link_helper("Login", login_path)
+        # (link1 + link2).html_safe
       end
+      (link1 + link2).html_safe
     end
   end
 
