@@ -2,6 +2,7 @@ class Category < ActiveRecord::Base
   has_many :products
 
   validates :name, uniqueness: true
+  validates :name, presence: true
 
   before_save :naming_convention
 
