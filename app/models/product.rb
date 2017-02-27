@@ -7,7 +7,7 @@ class Product < ActiveRecord::Base
   has_many :volume_costs, :dependent => :destroy
 
   validates :name, uniqueness: true
-  validates :name, presence: true
+  validates :name, :description, presence: true
 
   before_save :naming_convention
 
