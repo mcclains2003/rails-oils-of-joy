@@ -5,9 +5,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(user_params)
-    return redirect_to signup_path unless user.save
-    session[:user_id] = user.id
+    @user = User.new(user_params)
+    return render :new unless @user.save
+    session[:user_id] = @user.id
     redirect_to root_path, notice: "You have successfully signed up!"
   end
 
