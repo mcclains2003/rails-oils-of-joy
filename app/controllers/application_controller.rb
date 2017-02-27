@@ -15,11 +15,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def authorize
-    if current_user && !current_user.admin?
-      redirect_to root_path, alert: "You do not have access to this page, please contact the administrator"
-    else
-      redirect_to login_path, alert: "Please log in"
-    end
+    redirect_to root_path, alert: "You do not have access to this page, please login as an admin or contact the administrator" unless allowed?
   end
 
   def allowed?
