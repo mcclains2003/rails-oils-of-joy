@@ -12,7 +12,7 @@ class OilsController < ApplicationController
     if @oil.save
       redirect_to oil_path(@oil)
     else
-      redirect_to new_oil_path
+      render :new
     end
   end
 
