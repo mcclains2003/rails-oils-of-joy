@@ -1,15 +1,17 @@
 <h1>Categories</h1>
 
-<ul>
-  <% @categories.each do |category| %>
-    <li>
-      <%= category.name %>: 
-      <button type="button" class="btn btn-secondary">
-        <%= link_to "Edit", edit_category_path(category) %>
-      </button>
-      <button type="button" class="btn btn-secondary">
-        <%= link_to "Delete", category , method: :delete, data: { confirm: "Are You Sure?" } %>
-      </button>
-    </li>
-  <% end %>
-</ul>
+<div class="row">
+  <ul>
+    <% @categories.each do |category| %>
+      <li>
+        <div class="col">
+          <%= category.name %>: 
+        </div>
+        <div class="col">
+          <%= link_to "Edit", edit_category_path(category), class: "btn btn-secondary" %>
+          <%= link_to "Delete", category , method: :delete, class: "btn btn-secondary", data: { confirm: "Are You Sure?" } %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
