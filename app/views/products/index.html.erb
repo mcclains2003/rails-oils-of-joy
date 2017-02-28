@@ -1,9 +1,13 @@
 <div class="container-fluid">
 
   <div class="row">
-    <h1><%= @category.name %></h1>
+    <div class="col-12 col-md-auto">
+      <h2><%= @category.name %></h2>
+    </div>
     <% if allowed? %>
-      <%= link_to "New #{@category.name.singularize}", new_category_product_path(@category.id) %>
+    <div class="col">
+      <%= link_to "New #{@category.name.singularize}", new_category_product_path(@category.id), class: "btn btn-secondary" %>
+    </div>
     <% end %>
   </div>
 
