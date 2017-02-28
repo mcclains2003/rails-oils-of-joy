@@ -1,4 +1,20 @@
 <h1><%= @oil.name %></h1>
 <p><%= @oil.description %></p>
 
-<%= link_to "Edit", edit_oil_path(@oil) %>
+<h4>Available Products with this oil:</h4>
+<ul>
+  <% @oil.products.each do |product| %>
+    <li><%= link_to product.name, product_path(product) %></li>
+  <% end %>
+</ul>
+
+<% if allowed? %>
+  <div class="col">
+    <button type="button" class="btn btn-secondary">
+      <%= link_to "Edit", edit_oil_path(@oil) %>
+    </button>
+    <button type="button" class="btn btn-secondary">
+      <%= link_to "Delete", @oil , method: :delete, data: { confirm: "Are You Sure?" } %>
+    </button>
+  </div>
+<% end %>

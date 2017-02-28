@@ -1,8 +1,23 @@
-<h2>Assorted Scents:</h2>
-<ul>
-  <% @oils.each do |oil| %>
-    <li>
-      <%= link_to oil.name, oil_path(oil) %>
-    </li>
-  <% end %>
-</ul>
+<h1>Assorted Scents:</h1>
+
+<div class="row">
+  <ul>
+    <% @oils.each do |oil| %>
+      <li>
+        <div class="col">
+          <%= link_to oil.name, oil_path(oil) %> 
+        </div>
+        <% if allowed? %>
+          <div class="col">
+            <button type="button" class="btn btn-secondary">
+              <%= link_to "Edit", edit_oil_path(oil) %>
+            </button>
+            <button type="button" class="btn btn-secondary">
+              <%= link_to "Delete", oil , method: :delete, data: { confirm: "Are You Sure?" } %>
+            </button>
+          </div>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>

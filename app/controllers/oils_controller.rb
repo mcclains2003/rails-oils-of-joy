@@ -35,6 +35,9 @@ class OilsController < ApplicationController
   end
 
   def destroy
+    @oil.delete
+
+    redirect_to oils_path
   end
 
   private
