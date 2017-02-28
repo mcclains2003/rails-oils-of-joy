@@ -9,12 +9,8 @@
         </div>
         <% if allowed? %>
           <div class="col">
-            <button type="button" class="btn btn-secondary">
-              <%= link_to "Edit", edit_oil_path(oil) %>
-            </button>
-            <button type="button" class="btn btn-secondary">
-              <%= link_to "Delete", oil , method: :delete, data: { confirm: "Are You Sure?" } %>
-            </button>
+            <%= link_to "Edit", edit_oil_path(oil), class: "btn btn-secondary" %>
+            <%= link_to "Delete", oil , method: :delete, class: "btn btn-secondary", data: { confirm: "Are You Sure?" } %>
           </div>
         <% end %>
       </li>

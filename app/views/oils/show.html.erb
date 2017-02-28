@@ -1,20 +1,22 @@
-<h1><%= @oil.name %></h1>
-<p><%= @oil.description %></p>
-
-<h4>Available Products with this oil:</h4>
-<ul>
-  <% @oil.products.each do |product| %>
-    <li><%= link_to product.name, product_path(product) %></li>
-  <% end %>
-</ul>
-
-<% if allowed? %>
-  <div class="col">
-    <button type="button" class="btn btn-secondary">
-      <%= link_to "Edit", edit_oil_path(@oil) %>
-    </button>
-    <button type="button" class="btn btn-secondary">
-      <%= link_to "Delete", @oil , method: :delete, data: { confirm: "Are You Sure?" } %>
-    </button>
+<div class="container-fluid">
+  <div class="rounded card">
+    <div class="card-header">
+      <h4><%= @oil.name %></h4>
+    </div>
+    <div class="card-block">
+      <h5 class="card-title">Description</h5>
+      <p class="card-text"><%= @oil.description %></p>
+      <h5 class="card-title">Available Products with this oil:</h5>
+      <% @oil.products.each do |product| %>
+        <li class="card-text">
+          <%= link_to product.name, product_path(product) %>
+        </li>
+      <% end %>
+      
+      <% if allowed? %>
+        <%= link_to "Edit", edit_oil_path(@oil), class: "btn btn-secondary" %>
+        <%= link_to "Delete", @oil , method: :delete, class: "btn btn-secondary", data: { confirm: "Are You Sure?" } %>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</div>
