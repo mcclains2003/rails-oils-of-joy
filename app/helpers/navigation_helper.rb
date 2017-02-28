@@ -23,13 +23,13 @@ module NavigationHelper
   end
 
   def nav_text_helper(user)
-    content_tag(:li, "Hello, #{ user.name }", class: 'nav-text') do 
+    content_tag(:li, "Hello, #{ user.name }", class: 'nav-link') do 
       "Hello, #{ user.name }"
     end
   end
 
   def authentication_items
-    content_tag(:ul, class: "nav navbar-nav navbar-right") do 
+    content_tag(:ul, class: "nav navbar-nav navbar-right col-md-auto") do 
       if current_user
         link1 = nav_text_helper(current_user)
         link2 = nav_link_helper("Log Out", logout_path, :delete)
