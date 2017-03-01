@@ -16,12 +16,11 @@ class Product < ActiveRecord::Base
   scope :lip_glosses, -> { joins(:category).where('categories.name = ?', "Lip Glosses") }
   scope :scrubs, -> { joins(:category).where('categories.name = ?', "Scrubs") }
 
-  def volume_costs_attributes=(volume_costs_hashes)
-    vc = []
-    volume_costs_hashes.each do |i, attributes|
-      vc << VolumeCost.find_or_create_by(attributes).id
+  def volume_costs_attributes=(volume_costs_attributes)
+    self.volume_costs.destroy_all
+    volume_costs_attributes.each do |i, attributes|
+      self.volume_costs << VolumeCost.find_or_create_by(attributes)
     end
-    self.volume_cost_ids = vc
   end
 
   def volumes_with_data
