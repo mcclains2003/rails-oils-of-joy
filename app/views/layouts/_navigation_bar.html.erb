@@ -15,6 +15,9 @@
         </a>
         <%= product_category_index_dropdown %>
       </li>
+      <li>
+        <%= nav_link_helper("Contact Me", contact_path) %>
+      </li>
       <% if current_user.try(:admin?) %>
         <%= render partial: 'layouts/navbar_admin_items' %>
       <% end %>
