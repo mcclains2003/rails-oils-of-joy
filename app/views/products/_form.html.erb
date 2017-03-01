@@ -32,7 +32,7 @@
     <div class="form-group row">
       <label class="col-1 col-form-label"><%= f.label "Category" %></label>
       <div class="col-8">
-        <%= f.collection_select(:category_id, Category.all, :id, :name, {:selected => params[:category_id]}) %>
+        <%= f.collection_select(:category_id, Category.all, :id, :name, {:selected => @product.category_id, :prompt => 'Please select a category'}) %>
       </div>
     </div>
 
