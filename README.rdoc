@@ -1,28 +1,9 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This site is being created for my mother-in-laws essential oil products she sells. 
 
-Things you may want to cover:
+There are 2 ways to log in, you can either set up a user (which consists of a name, email, and password) or you can log in via Facebook.
 
-* Ruby version
+Products are sorted by categories (eg. Sprays, Hand Creams, ect...)
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+There are scopes set up for the products (eg. Product.hand_creams, Product.sprays, ect...), these of course return an array of products.
