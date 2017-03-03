@@ -8,4 +8,11 @@ RSpec.describe Category, type: :model do
     it { should validate_uniqueness_of(:name) }
   end
 
+  describe 'methods' do 
+    it "returns the name of the category capitalized and plural" do
+      category = Category.new(name: 'fresh flower')
+      expect(category.naming_convention).to eq 'Fresh Flowers'
+    end
+  end
+
 end
