@@ -7,14 +7,15 @@ class Product < ActiveRecord::Base
   has_many :volume_costs, :dependent => :destroy
 
   validates :name, uniqueness: true
-  validates :name, :description, presence: true
+  validates :name, :description, :category_id, presence: true
+  validates :oil_ids, :presence => {:message => "must select at least one Oil" }
 
   before_save :naming_convention
 
-  scope :hand_creams, -> { joins(:category).where('categories.name = ?', "Hand Creams") }
-  scope :sprays, -> { joins(:category).where('categories.name = ?', "Sprays") }
-  scope :lip_glosses, -> { joins(:category).where('categories.name = ?', "Lip Glosses") }
-  scope :scrubs, -> { joins(:category).where('categories.name = ?', "Scrubs") }
+  # scope :hand_creams, -> { joins(:category).where('categories.name = ?', "Hand Creams") }
+  # scope :sprays, -> { joins(:category).where('categories.name = ?', "Sprays") }
+  # scope :lip_glosses, -> { joins(:category).where('categories.name = ?', "Lip Glosses") }
+  # scope :scrubs, -> { joins(:category).where('categories.name = ?', "Scrubs") }
 
   def volume_costs_attributes=(volume_costs_attributes)
     self.volume_costs.destroy_all
