@@ -2,6 +2,8 @@
 
 This site is being created for my mother-in-laws essential oil products she sells. 
 
+Just fork the app, clone it down to your local machine, run bundle install, start up a server, and run the app on locolhost:3000
+
 There are 2 ways to log in, you can either set up a user (which consists of a name, email, and password) or you can log in via Facebook.
 
 Products are sorted by categories (eg. Sprays, Hand Creams, ect...)
