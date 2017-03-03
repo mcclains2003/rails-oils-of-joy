@@ -35,8 +35,12 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @category = Category.find(params[:category_id])
-    @products = Product.send(@category.name.downcase.gsub(" ", "_"))
+    if params[:category_id]
+      @category = Category.find(params[:category_id])
+      @products = @category.products
+    else
+      @products = Product.all
+    end
   end
 
   def destroy
