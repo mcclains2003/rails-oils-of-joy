@@ -12,6 +12,7 @@ class Product < ActiveRecord::Base
 
   before_save :naming_convention
 
+  scope :sort_alpha, -> { order(:name) }
   # scope :hand_creams, -> { joins(:category).where('categories.name = ?', "Hand Creams") }
   # scope :sprays, -> { joins(:category).where('categories.name = ?', "Sprays") }
   # scope :lip_glosses, -> { joins(:category).where('categories.name = ?', "Lip Glosses") }

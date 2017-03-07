@@ -37,9 +37,9 @@ class ProductsController < ApplicationController
   def index
     if params[:category_id]
       @category = Category.find(params[:category_id])
-      @products = @category.products
+      @products = @category.products.sort_alpha
     else
-      @products = Product.all
+      @products = Product.sort_alpha
     end
   end
 
