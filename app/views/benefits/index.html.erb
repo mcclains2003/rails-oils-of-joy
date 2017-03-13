@@ -1,0 +1,17 @@
+<h1>Benefits</h1>
+
+<div class="row">
+  <ul>
+    <% @benefits.each do |benefit| %>
+      <li>
+        <div class="col">
+          <%= benefit.description %>
+        </div>
+        <div class="col">
+          <%= link_to "Edit", edit_benefit_path(benefit), class: "btn btn-secondary" %>
+          <%= link_to "Delete", benefit , method: :delete, class: "btn btn-secondary", data: { confirm: "Are You Sure?" } %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
