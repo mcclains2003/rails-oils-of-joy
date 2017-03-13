@@ -27,6 +27,18 @@
     <%= f.text_area :description %>
   </div>
 
+  <div class="field">
+    <%= f.label "Benefits" %>
+    <div class="container-fluid">
+      <%= f.collection_check_boxes(:benefit_ids, Benefit.all, :id, :description) do |b| %>
+        <div class="d-inline-block col-md-3">
+          <%= b.check_box :class => "label-checkbox" %>
+          <%= b.label %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
