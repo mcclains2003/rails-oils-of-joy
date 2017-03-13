@@ -6,6 +6,12 @@
     <div class="card-block">
       <h5 class="card-title">Description</h5>
       <p class="card-text"><%= @oil.description %></p>
+      <h5 class="card-title">Benefits</h5>
+      <% @oil.benefits.each do |benefit| %>
+        <li>
+          <%= benefit.description %>
+        </li>
+      <% end %>
       <h5 class="card-title">Available Products with this oil:</h5>
       <% @oil.products.each do |product| %>
         <li class="card-text">
