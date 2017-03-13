@@ -43,7 +43,7 @@ class OilsController < ApplicationController
   private
 
   def oil_params
-    params.require(:oil).permit(:name, :description)
+    params.require(:oil).permit(:name, :description, :benefit_ids => [])
   end
 
   def set_oil
