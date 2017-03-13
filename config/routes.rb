@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :users, :only => [:new, :create]
   resources :oils
   resources :products
+  resources :benefits
   
   resources :categories do 
     resources :products, only: [:new, :create, :index]
