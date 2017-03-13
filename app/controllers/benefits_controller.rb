@@ -10,14 +10,14 @@ class BenefitsController < ApplicationController
     @benefit = Benefit.new(benefit_params)
 
     if @benefit.save
-      redirect_to benefit_path(@benefit)
+      redirect_to benefits_path
     else
       render :new
     end
   end
 
   def index
-    @benefits = Benefits.all
+    @benefits = Benefit.all
   end
 
   def show
