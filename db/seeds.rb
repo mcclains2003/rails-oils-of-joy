@@ -6,27 +6,53 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+user = User.new
+user.name = "Shaun McClain"
+user.password = "password"
+user.password_confirmation = "password"
+user.email = "admin@admin.com"
+user.admin = true
+user.save
 
-category = Category.create([
-  { name: "Lotion" }, { name: "Scrub" }
-  ])
+category1 = Category.create(name: "hand cream")
+category2 = Category.create(name: "lip gloss")
+category3 = Category.create(name: "spray")
+category4 = Category.create(name: "scrub")
   
-oil = Oil.create([
-  { name: "Rose", description: "smells rosy" }, { name: "Lemon", description: "smells lemony" }
-  ])
+oil1 = Oil.create([ name: "Rose", description: "smells rosy" ])
+oil2 = Oil.create([ name: "Lavender", description: "smells lavender-y" ])
+oil3 = Oil.create([ name: "Lemon", description: "smells lemony" ])
+oil4 = Oil.create([ name: "Tea Tree", description: "smells like a tree" ])
 
-variant = Variant.create([
-  { size: "8 oz" }, { size: "6 oz" }
-  ])
+vc1 = VolumeCost.create([ volume: 2, cost: 4 ])
+vc2 = VolumeCost.create([ volume: 3, cost: 6 ])
+vc3 = VolumeCost.create([ volume: 4, cost: 8 ])
+vc4 = VolumeCost.create([ volume: 5, cost: 10 ])
 
-product = Product.create([
-  { name: "Happy Feet", description: "Makes feet happy", category_id: category.first.id }
-  ])
+pro1 = Product.new
+pro1.name = "Product One"
+pro1.description = "Description of product one"
+pro1.category_id = category1.id
+pro1.oils = oil1
+pro1.save
 
-ProductOil.create([
-  { product_id: product.first.id, oil_id: oil.first.id }
-  ])
+pro2 = Product.new
+pro2.name = "Product Two"
+pro2.description = "Description of product two"
+pro2.category_id = category2.id
+pro2.oils = oil2
+pro2.save
 
-ProductVariant.create([
-  { product_id: product.first.id, variant_id: variant.first.id, price: 8.00 }, { product_id: product.first.id, variant_id: variant.last.id, price: 5.00 }
-  ])
+pro3 = Product.new
+pro3.name = "Product Three"
+pro3.description = "Description of product three"
+pro3.category_id = category3.id
+pro3.oils = oil3
+pro3.save
+
+pro4 = Product.new
+pro4.name = "Product Four"
+pro4.description = "Description of product four"
+pro4.category_id = category4.id
+pro4.oils = oil4
+pro4.save
