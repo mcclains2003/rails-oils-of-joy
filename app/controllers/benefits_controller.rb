@@ -11,7 +11,7 @@ class BenefitsController < ApplicationController
     @benefit = @oil.benefits.build(benefit_params)
 
     if @benefit.save
-      redirect_to @oil
+      render 'benefits/show', :layout => false
     else
       render "oils/show"
     end
