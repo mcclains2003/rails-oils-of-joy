@@ -8,8 +8,8 @@
           <%= benefit.description %>
         </div>
         <div class="col">
-          <%= link_to "Edit", edit_benefit_path(benefit), class: "btn btn-secondary" %>
-          <%= link_to "Delete", benefit , method: :delete, class: "btn btn-secondary", data: { confirm: "Are You Sure?" } %>
+          <%= link_to "Edit", edit_oil_benefit_path(params[:oil_id], benefit), class: "btn btn-secondary" %>
+          <%= link_to "Delete", oil_benefit_path(@oil, benefit) , method: :delete, class: "btn btn-secondary", data: { confirm: "Are You Sure?" } %>
         </div>
       </li>
     <% end %>
