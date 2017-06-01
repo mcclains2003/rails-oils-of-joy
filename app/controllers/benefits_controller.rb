@@ -1,4 +1,5 @@
 class BenefitsController < ApplicationController
+  before_action :set_oil
   before_action :set_benefit, only: [:show, :edit, :update, :destroy]
   before_action :authorize, except: [:show, :index]
 
@@ -7,17 +8,17 @@ class BenefitsController < ApplicationController
   end
 
   def create
-    @benefit = Benefit.new(benefit_params)
+    @benefit = @oil.benefits.build(benefit_params)
 
     if @benefit.save
-      redirect_to benefits_path
+      redirect_to @oil
     else
-      render :new
+      render "oils/show"
     end
   end
 
   def index
-    @benefits = Benefit.all
+    @benefits = @oil.benefits
   end
 
   def show
@@ -48,6 +49,10 @@ class BenefitsController < ApplicationController
 
   def set_benefit
     @benefit = Benefit.find(params[:id])
+  end
+
+  def set_oil
+    @oil = Oil.find(params[:oil_id])
   end
 
 end
