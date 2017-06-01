@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   resources :users, :only => [:new, :create]
   resources :products
-  resources :benefits, except: [:show]
+  # resources :benefits, except: [:show]
   
   resources :oils do
-    resources :benefits, :only => [:new]
+    # resources :benefits, :only => [:new, :create]
+    resources :benefits
   end
   resources :categories do 
     resources :products, only: [:new, :create, :index]
