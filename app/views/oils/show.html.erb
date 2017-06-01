@@ -7,11 +7,21 @@
       <h5 class="card-title">Description</h5>
       <p class="card-text"><%= @oil.description %></p>
       <h5 class="card-title">Benefits</h5>
-      <% @oil.benefits.each do |benefit| %>
-        <li>
-          <%= benefit.description %>
-        </li>
+      
+      <!-- renders the list of benefits -->
+      <div class="benefit">
+        <%= render "benefits/benefits" %>
+      </div>
+
+      <!-- only shows the new benefit text box if you are an admin -->
+      <% if allowed? %>
+        <%= form_for([@oil, @benefit]) do |f| %>
+          <%= f.text_area :description %>
+
+          <p><%= f.submit %></p>
+        <% end %>
       <% end %>
+
       <h5 class="card-title">Available Products with this oil:</h5>
       <% @oil.products.each do |product| %>
         <li class="card-text">
@@ -26,3 +36,13 @@
     </div>
   </div>
 </div>
+
+
+<!-- <script type="text/javascript" charset="utf-8">
+  $(function () {
+    $('form').submit(function(e) {
+      e.preventDefault();
+      alert("STTOOOOOPPPPP")
+    })
+  })
+</script> -->
