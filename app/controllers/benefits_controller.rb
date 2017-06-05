@@ -11,11 +11,24 @@ class BenefitsController < ApplicationController
     @benefit = @oil.benefits.build(benefit_params)
 
     if @benefit.save
-      render 'benefits/show', :layout => false
+      respond_to do |f|
+        f.html { redirect_to oil_path(@oil) }
+        f.json { render :json => @benefit }
+      end
     else
       render "oils/show"
     end
   end
+
+  # def create
+  #   @benefit = @oil.benefits.build(benefit_params)
+
+  #   if @benefit.save
+  #     render 'benefits/show', :layout => false
+  #   else
+  #     render "oils/show"
+  #   end
+  # end
 
   def index
     @benefits = @oil.benefits
