@@ -26,6 +26,7 @@ $(function() {
 });
 
 var successCallback = function(json) {
+  $("#benefit_description").val('');
   var benefit = new Benefit(json);
   var benefitLi = benefit.renderLI();
   var $ol = $("div.benefit ul")
