@@ -20,10 +20,10 @@ class OilsController < ApplicationController
     @oil_benefits = @oil.benefits
     @benefit = Benefit.new
 
-    # respond_to do |format|
-    #   format.html { render :show }
-    #   format.json { render json: @oil }
-    # end
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @oil }
+    end
   end
 
   def edit
