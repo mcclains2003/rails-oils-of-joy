@@ -1,15 +1,28 @@
 <div class="container-fluid">
   <div class="rounded card">
     <div class="card-header">
-      <h4><%= link_to product.name, product_path(product) %></h4>
+      <h4><%= link_to product.name, product_path(product), id: "productName" %></h4>
+      <a href="#" class="next-product" data-id=<%= product.id %>>Next Product</a>
     </div>
     <div class="card-block">
       <h5 class="card-title">Description</h5>
-      <p class="card-text"><%= product.description %></p>
+      <p class="card-text" id="productDescription"><%= product.description %></p>
       <h5 class="card-title">Available Scents</h5>
-      <p class="card-text"><%= product.oils.collect { |oil| oil.name }.join(", ") %></p>
+      <p class="card-text">
+        <ul id="productOils">
+          <% product.oils.each do |oil| %>
+            <li><%= oil.name %></li>
+          <% end %>
+        </ul>
+      </p>
       <h5 class="card-title">Volume and Cost</h5>
-      <p class="card-text"><%= product.volumes_with_data.collect { |vc| "| #{vc.volume} oz - #{number_to_currency(vc.cost)} |" }.join(", ") %></p>
+      <p class="card-text">
+        <ul id="productVolumeCost">
+          <% product.volumes_with_data.each do |vc| %>
+            <li><%= "#{vc.volume} oz - #{number_to_currency(vc.cost)}" %></li>
+          <% end %>
+        </ul>
+      </p>
       
       <% if allowed? %>
         <div class="btn-group btn-group-sm" role="group" >
