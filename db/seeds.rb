@@ -34,6 +34,7 @@ pro1.name = "Product One"
 pro1.description = "Description of product one"
 pro1.category_id = category1.id
 pro1.oils = oil1
+pro1.volume_costs = vc1
 pro1.save
 
 pro2 = Product.new
@@ -41,6 +42,7 @@ pro2.name = "Product Two"
 pro2.description = "Description of product two"
 pro2.category_id = category2.id
 pro2.oils = oil2
+pro2.volume_costs = vc2
 pro2.save
 
 pro3 = Product.new
@@ -48,6 +50,7 @@ pro3.name = "Product Three"
 pro3.description = "Description of product three"
 pro3.category_id = category3.id
 pro3.oils = oil3
+pro3.volume_costs = vc3
 pro3.save
 
 pro4 = Product.new
@@ -55,4 +58,5 @@ pro4.name = "Product Four"
 pro4.description = "Description of product four"
 pro4.category_id = category4.id
 pro4.oils = oil4
+pro4.volume_costs = vc4
 pro4.save
