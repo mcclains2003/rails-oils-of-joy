@@ -3,7 +3,6 @@
     <div class="card-header">
       <h4><%= link_to product.name, product_path(product), id: "productName" %></h4>
       <%= next_product_link(params["action"], product.id) %>
-      <!-- <a href="#" class="next-product" data-id=<%#= product.id %>>Next Product</a> -->
     </div>
     <div class="card-block">
       <h5 class="card-title">Description</h5>
