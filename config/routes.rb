@@ -7,9 +7,12 @@ Rails.application.routes.draw do
     # resources :benefits, :only => [:new, :create]
     resources :benefits
   end
+
   resources :categories do 
     resources :products, only: [:new, :create, :index]
   end
+
+  get '/products/volume_costs/new' => 'volume_costs#new'
 
   # Static Pages
   root 'static_pages#home'
