@@ -41,6 +41,20 @@ $(function () {
   });
 });
 
+$(function () {
+  $("a.addFormSize").on("click", function(e) {
+    var $addFormLink = $(this);
+    var url = $(this).attr('data-url');
+
+    $.get(url, function(response) {
+      console.log(response);
+      $addFormLink.before(response)
+    })
+
+    e.preventDefault();
+  })
+})
+
 // future function for selecting item from the drop down, this will 
 // impact volume_cost items that show up
 // var findCategory = function() {

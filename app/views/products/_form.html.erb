@@ -49,19 +49,15 @@
     </div>
 
     <%= f.fields_for :volume_costs do |vc_builder| %>
-      <div class="form-group row">
-        <label class="col-1 col-form-label"><%= vc_builder.label "Volume" %></label>
-        <%= vc_builder.number_field :volume, step: 0.01 %>
-        <div class="input-group-addon">ozs</div>
-
-        <label class="col-1 col-form-label"><%= vc_builder.label "Cost" %></label>
-        <div class="input-group-addon">$</div>
-        <%= vc_builder.number_field :cost, step: 0.01 %>
-      </div>  
+      <%= render partial: 'volume_costs/form_fields', locals: {vc_builder: vc_builder} %>
     <% end %>
+
+    <%= link_to "... add another size", "#", class: "addFormSize", data: { url: '/products/volume_costs/new' } %>
 
     <div class="actions">
       <%= f.submit %>
     </div>
 
   <% end %>
+
+  <script type="text/javascript"></script>
