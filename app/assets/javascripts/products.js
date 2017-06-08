@@ -40,3 +40,9 @@ $(function () {
     })
   });
 });
+
+// future function for selecting item from the drop down, this will 
+// impact volume_cost items that show up
+// var findCategory = function() {
+//   $('#product_category_id').find(":selected").text();
+// }
