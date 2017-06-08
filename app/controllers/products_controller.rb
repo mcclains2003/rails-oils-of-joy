@@ -5,12 +5,11 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new(category_id: params[:category_id])
 
-    3.times do
-      @product.volume_costs.build
-    end
+    @product.volume_costs.build
   end
 
   def create
+    # raise params.inspect
     @product = Product.new(product_params)
 
     if @product.save
