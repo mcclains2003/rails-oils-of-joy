@@ -19,7 +19,7 @@ class Product < ActiveRecord::Base
   # scope :scrubs, -> { joins(:category).where('categories.name = ?', "Scrubs") }
 
   def volume_costs_attributes=(volume_costs_attributes)
-    self.volume_costs.destroy_all
+    # self.volume_costs.destroy_all
     volume_costs_attributes.each do |i, attributes|
       self.volume_costs << VolumeCost.find_or_create_by(attributes)
     end
