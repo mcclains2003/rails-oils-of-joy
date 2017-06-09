@@ -15,3 +15,4 @@
 //= require handlebars.min
 //= require_tree .
 //= require bootstrap
+//= require tether
