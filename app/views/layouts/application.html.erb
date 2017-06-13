@@ -3,6 +3,7 @@
 <head>
   <title>OilsOfJoy</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
+  <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
   <script src="https://use.fontawesome.com/6af8f1a327.js"></script>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -16,7 +17,9 @@
 </div>
 
 <div class="container-fluid">
-  <%= yield %>
+  <div class="app-container">
+    <%= yield %> 
+  </div>
 </div>
 
 </body>
