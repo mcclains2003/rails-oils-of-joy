@@ -20,7 +20,7 @@ module NavigationHelper
 
   def nav_link_helper(name, path, method = :get)
     content_tag(:li, class: 'nav-item') do 
-      link_to name, path, method: method, class: 'nav-link'
+      link_to name, path, method: method, class: 'nav-link', id: name.underscore
     end
   end
 
