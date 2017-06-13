@@ -110,8 +110,8 @@ $(function () {
       .then(products => {
         $("div.app-container").html('')
         products.forEach(function(product) {
-          var data = new Product(product)
-          var text = data.formatIndex()
+          var data = new Product(product);
+          var text = data.formatIndex();
 
           $("div.app-container").append(text);
         }) 
