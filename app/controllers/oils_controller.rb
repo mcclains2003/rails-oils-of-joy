@@ -39,6 +39,11 @@ class OilsController < ApplicationController
 
   def index
     @oils = Oil.all
+
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @oils }
+    end
   end
 
   def destroy
