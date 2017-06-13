@@ -1,8 +1,46 @@
+// Product constructor function
+function Product(product) {
+  this.id = product.id
+  this.name = product.name
+  this.description = product.description
+  this.oils = product.oils
+  this.volume_costs = product.volume_costs
+};
+
+// Product info placement
+Product.prototype.formatIndex = function() {
+    return `<div class="container-fluid">
+      <div class="rounded card">
+        <div class="card-header">
+          <a href="/products/${this["id"]}" id="productName"><h4>${this["name"]}</h4></a>
+        </div>
+        <div class="card-block">
+          <h5 class="card-title">Description</h5>
+          <p class="card-text" id="productDescription">${this["description"]}</p>
+          <h5 class="card-title">Available Scents</h5>
+          <p class="card-text">
+            <ul id="productOils">
+              ${productOils(this)}
+            </ul>
+          </p>
+          <h5 class="card-title">Volume and Cost</h5>
+          <p class="card-text">
+            <ul id="productVolumeCost">
+              ${productVolumeCost(this)}
+            </ul>
+          </p>
+        </div>
+      </div>
+    </div>`
+}
+
+// Formats the volume_cost Cost attribute
 var currency = function(integer) {
   return "$" + integer + "0";
 }
 
-var nextProductOils = function(data) {
+// This show the oils when given product data and formats them for viewing.
+var productOils = function(data) {
   var productOilsList = data["oils"];
   var oils = "";
 
@@ -10,10 +48,11 @@ var nextProductOils = function(data) {
     oils += "<li>" + oil["name"] + "</li>"
   });
   
-  $("ul#productOils").html(oils);
+  return oils;
 }
 
-var nextProductVolumeCost = function(data) {
+// This shows the volume costs when given product data and formats them for viewing
+var productVolumeCost = function(data) {
   var productVolumeCosts = data["volume_costs"];
   var volumeCosts = "";
 
@@ -21,9 +60,10 @@ var nextProductVolumeCost = function(data) {
     volumeCosts += "<li>" + vc.volume + " oz - " + currency(vc.cost) + "</li>"
   });
   
-  $("ul#productVolumeCost").html(volumeCosts);
+  return volumeCosts;
 }
 
+// Product show page - next Product - button hijack, shows next product
 $(function () {
   $("a.next-product").on("click", function() {
     var nextProductID = parseInt($(".next-product").attr("data-id")) + 1;
@@ -33,14 +73,16 @@ $(function () {
       $("#productName").text(data["name"]);
       $("#productName").attr("href", nextURL);
       $("#productDescription").text(data["description"]);
-      nextProductOils(data);
-      nextProductVolumeCost(data);
+      $("ul#productOils").html(productOils(data));
+      $("ul#productVolumeCost").html(productVolumeCost(data));
 
       $("a.next-product").attr("data-id", data["id"])
+      window.history.pushState(data, "", nextURL);
     })
   });
 });
 
+// Volume Costs form 
 $(function () {
   $("a.addFormSize").on("click", function(e) {
     var $addFormLink = $(this);
@@ -55,8 +97,50 @@ $(function () {
   })
 })
 
+// Posts index fetch
+$(function () {
+  $("a.dropdown-item").on("click", function(e) {
+    var categoryId = parseInt(this["id"]);
+    var productsUrl = "/categories/" + categoryId + "/products.json"
+
+    history.pushState(null, null, productsUrl);
+
+    fetch(productsUrl)
+      .then(res => res.json())
+      .then(products => {
+        $("div.app-container").html('')
+        products.forEach(function(product) {
+          var data = new Product(product)
+          var text = data.formatIndex()
+
+          $("div.app-container").append(text);
+        }) 
+      })
+
+    e.preventDefault();
+  });
+})
+// $(function () {
+//   $("a.dropdown-item").on("click", function(e) {
+//     var categoryId = parseInt(this["id"]);
+    
+//     $.get("/categories/" + categoryId + "/products", function(data) {
+//       console.log(data)
+//     })
+
+//     e.preventDefault();
+//   })
+// })
+
 // future function for selecting item from the drop down, this will 
 // impact volume_cost items that show up
 // var findCategory = function() {
 //   $('#product_category_id').find(":selected").text();
 // }
+
+
+
+
+
+
+
