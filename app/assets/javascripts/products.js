@@ -75,6 +75,8 @@ $(function () {
       $("#productDescription").text(data["description"]);
       $("ul#productOils").html(productOils(data));
       $("ul#productVolumeCost").html(productVolumeCost(data));
+      $("a#edit_product").attr("href", nextURL + "/edit")
+      $("a#delete_product").attr("href", nextURL)
 
       $("a.next-product").attr("data-id", data["id"])
       window.history.pushState(data, "", nextURL);
