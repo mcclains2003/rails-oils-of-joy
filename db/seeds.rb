@@ -24,10 +24,10 @@ oil2 = Oil.create([ name: "Lavender", description: "smells lavender-y" ])
 oil3 = Oil.create([ name: "Lemon", description: "smells lemony" ])
 oil4 = Oil.create([ name: "Tea Tree", description: "smells like a tree" ])
 
-vc1 = VolumeCost.create([ volume: 2, cost: 4 ])
-vc2 = VolumeCost.create([ volume: 3, cost: 6 ])
-vc3 = VolumeCost.create([ volume: 4, cost: 8 ])
-vc4 = VolumeCost.create([ volume: 5, cost: 10 ])
+vc1 = VolumeCost.create([ volume: 2, cost: 4, category_type: "hand_cream" ])
+vc2 = VolumeCost.create([ volume: 3, cost: 6, category_type: "lip_gloss" ])
+vc3 = VolumeCost.create([ volume: 4, cost: 8, category_type: "spray" ])
+vc4 = VolumeCost.create([ volume: 5, cost: 10, category_type: "scrub" ])
 
 pro1 = Product.new
 pro1.name = "Product One"
