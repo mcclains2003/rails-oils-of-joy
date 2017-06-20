@@ -1,4 +1,4 @@
 class VolumeCostSerializer < ActiveModel::Serializer
-  attributes :volume, :cost
-  belongs_to :product
+  attributes :volume, :cost, :category_type
+  has_many :products
 end
