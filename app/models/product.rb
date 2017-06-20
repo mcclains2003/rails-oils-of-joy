@@ -20,8 +20,10 @@ class Product < ActiveRecord::Base
 
   def volume_costs_attributes=(volume_costs_attributes)
     self.volume_costs.destroy_all
-    # binding.pry
-    volume_costs_attributes.each do |i, attributes|
+
+    volume_costs_attributes.each do |attributes|
+      next if attributes["volume"] === "0.0" || attributes["cost"] === "0.0"
+
       self.volume_costs << VolumeCost.find_or_create_by(attributes)
     end
   end
