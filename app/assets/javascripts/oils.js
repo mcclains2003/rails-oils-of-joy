@@ -1,17 +1,14 @@
-// $(function() {
-//   $("a.nav-link#oils").on('click', function(e) {
-//     console.log("Hello")
-//     // fetch("/oils.json")
-//     //   .then(res => console.log(res.json()))
-//     e.preventDefault();
-//   })
-// })
-
-
 $(function () {
+  $('a#oils').removeAttr("data-method")
+
   $("a#oils").on("click", function(e) {
-    console.log(e);
-    
+    var oilsUrl = this["href"] + ".json"
+    fetch(oilsUrl)
+      .then(res => res.json())
+      .then(oil => {
+
+      })
+
     e.preventDefault();
   });
 })
