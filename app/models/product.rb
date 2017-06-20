@@ -4,7 +4,8 @@ class Product < ActiveRecord::Base
   has_many :product_oils
   has_many :oils, through: :product_oils
 
-  has_many :volume_costs, :dependent => :destroy
+  has_many :product_volume_costs
+  has_many :volume_costs, through: :product_volume_costs
 
   validates :name, uniqueness: true
   validates :name, :description, :category_id, presence: true
