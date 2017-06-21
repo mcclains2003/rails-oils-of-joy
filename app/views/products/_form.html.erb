@@ -38,7 +38,7 @@
 
     <div class="form-check row">
       <label class="col-1 col-form-label"><%= f.label "Oils" %></label>
-      <div class="container-fluid">
+      <div class="container-fluid oils">
         <%= f.collection_check_boxes(:oil_ids, Oil.all, :id, :name) do |b| %>
           <div class="d-inline-block col-md-3">
             <%= b.check_box :class => "label-checkbox" %>
@@ -48,16 +48,16 @@
       </div>
     </div>
 
-    <%= f.fields_for :volume_costs do |vc_builder| %>
-      <%= render partial: 'volume_costs/form_fields', locals: {vc_builder: vc_builder} %>
-    <% end %>
+    <div class="form-check row">
+      <label class="col-1 col-form-label">
+        <%= f.label "Size/Cost" %>
+      </label>
 
-    <%= link_to "... add another size", "#", class: "addFormSize", data: { url: '/products/volume_costs/new' } %>
+      <div class="container-fluid volume_costs vol_costs"></div>
+    </div>
 
     <div class="actions">
       <%= f.submit %>
     </div>
 
   <% end %>
-
-  <script type="text/javascript"></script>
