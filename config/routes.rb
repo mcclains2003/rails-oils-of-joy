@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :categories do 
     resources :products, only: [:new, :create, :index]
+    resources :volume_costs
   end
 
   get '/products/volume_costs/new' => 'volume_costs#new'
