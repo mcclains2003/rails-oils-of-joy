@@ -124,27 +124,5 @@ $(function () {
     e.preventDefault();
   });
 })
-// $(function () {
-//   $("a.dropdown-item").on("click", function(e) {
-//     var categoryId = parseInt(this["id"]);
-    
-//     $.get("/categories/" + categoryId + "/products", function(data) {
-//       console.log(data)
-//     })
-
-//     e.preventDefault();
-//   })
-// })
-
-// future function for selecting item from the drop down, this will 
-// impact volume_cost items that show up
-// var findCategory = function() {
-//   $('#product_category_id').find(":selected").text();
-// }
-
-
-
-
-
 
 
