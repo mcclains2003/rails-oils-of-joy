@@ -20,16 +20,6 @@ class BenefitsController < ApplicationController
     end
   end
 
-  # def create
-  #   @benefit = @oil.benefits.build(benefit_params)
-
-  #   if @benefit.save
-  #     render 'benefits/show', :layout => false
-  #   else
-  #     render "oils/show"
-  #   end
-  # end
-
   def index
     @benefits = @oil.benefits
   end
