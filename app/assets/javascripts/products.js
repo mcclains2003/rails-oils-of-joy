@@ -103,7 +103,7 @@ $(function () {
 
 // Posts index fetch
 $(function () {
-  $("a.dropdown-item").on("click", function(e) {
+  $("a.product").on("click", function(e) {
     var categoryId = parseInt(this["id"]);
     var productsUrl = "/categories/" + categoryId + "/products.json"
 

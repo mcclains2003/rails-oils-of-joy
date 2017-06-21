@@ -13,7 +13,7 @@ module NavigationHelper
       all_categories.collect do |category|
         classTitle = category.name.parameterize('_')
 
-        content_tag(:a, category.name, {class: "#{ classTitle } dropdown-item", href: "/categories/#{ category.id }/products", id: category.id})
+        content_tag(:a, category.name, {class: "product dropdown-item", href: "/categories/#{ category.id }/products", id: category.id})
       end.join.html_safe
     end
   end
