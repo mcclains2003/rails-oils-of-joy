@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170620142206) do
+ActiveRecord::Schema.define(version: 20170620182016) do
 
   create_table "benefits", force: :cascade do |t|
     t.string   "description"
@@ -72,11 +72,11 @@ ActiveRecord::Schema.define(version: 20170620142206) do
   end
 
   create_table "volume_costs", force: :cascade do |t|
-    t.decimal  "volume",        precision: 10, scale: 2, default: 0.0
-    t.decimal  "cost",          precision: 10, scale: 2, default: 0.0
-    t.datetime "created_at",                                           null: false
-    t.datetime "updated_at",                                           null: false
-    t.string   "category_type"
+    t.decimal  "volume",      precision: 10, scale: 2, default: 0.0
+    t.decimal  "cost",        precision: 10, scale: 2, default: 0.0
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
+    t.integer  "category_id"
   end
 
 end
