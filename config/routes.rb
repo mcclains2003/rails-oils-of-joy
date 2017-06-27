@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :users, :only => [:new, :create]
   resources :products
+  resources :volume_costs, only: [:new, :create, :edit, :update]
   # resources :benefits, except: [:show]
   
   resources :oils do
