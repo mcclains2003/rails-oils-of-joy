@@ -2,6 +2,17 @@ class VolumeCostsController < ApplicationController
   before_action :authorize
 
   def new
+    @volume_cost = VolumeCost.new
+  end
+
+  def create
+    @volume_cost = VolumeCost.new(volume_cost_params)
+
+    if @volume_cost.save
+      redirect_to category_volume_costs_path(@volume_cost.category_id)
+    else
+      render :new
+    end    
   end
 
   def index
