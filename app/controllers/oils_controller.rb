@@ -47,9 +47,12 @@ class OilsController < ApplicationController
   end
 
   def destroy
-    @oil.delete
+    @oil.destroy
 
-    redirect_to oils_path
+    respond_to do |f|
+      f.json { render :json => @oil }
+      f.html { redirect_to oils_path }
+    end
   end
 
   private
