@@ -1,14 +1,16 @@
-// $(function () {
-//   $('a#oils').removeAttr("data-method")
+$(function() {
+  $("input.delete-button").on("click", function(e) {
+    e.preventDefault();
+    var $item = $(this).parent("form");
+    var action = $item.attr("action");
+    var params = $item.serialize();
 
-//   $("a#oils").on("click", function(e) {
-//     var oilsUrl = this["href"] + ".json"
-//     fetch(oilsUrl)
-//       .then(res => res.json())
-//       .then(oil => {
+    $.ajax({
+      url: action,
+      data: params,
+      dataType: "json",
+      method: "DELETE"
+    })
 
-//       })
-
-//     e.preventDefault();
-//   });
-// })
+  });
+})
