@@ -3,14 +3,16 @@
 <div class="row">
   <ul>
     <% @oils.each do |oil| %>
-      <li>
+      <li id="oil_<%= oil.id %>">
         <div class="col">
           <%= link_to oil.name, oil_path(oil) %> 
         </div>
         <% if allowed? %>
           <div class="col">
-            <%= link_to "Edit", edit_oil_path(oil), class: "btn btn-secondary" %>
-            <%= link_to "Delete", oil , method: :delete, class: "btn btn-secondary", data: { confirm: "Are You Sure?" } %>
+            <%= button_to "Edit", edit_oil_path(oil), :method => "get", :class => "btn btn-secondary" %>
+            <%#= link_to "Edit", edit_oil_path(oil), class: "btn btn-secondary" %>
+            <%= button_to "Delete", oil, :method => "delete", :class => "btn btn-secondary delete-button" %>
+            <%#= link_to "Delete", oil , method: :delete, class: "btn btn-secondary delete-button" %>
           </div>
         <% end %>
       </li>
