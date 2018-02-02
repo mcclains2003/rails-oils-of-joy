@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.6'
+gem 'rails', '~> 4.2.7.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -29,7 +29,7 @@ gem 'bootstrap', '~> 4.0.0.alpha6'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-gem 'omniauth'
+gem 'omniauth', '~> 1.3.2'
 gem 'omniauth-facebook'
 
 # Use Unicorn as the app server
